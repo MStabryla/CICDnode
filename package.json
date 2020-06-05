@@ -1,0 +1,14 @@
+{
+    "name": "ask2020-node-cicd",
+    "version": "1.0.0",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "#"
+    },
+    "scripts": {
+        "start": "node server/.",
+        "dev": "nodemon -r dotenv/config .",
+        "test": "mocha -r dotenv/config --exit tests"
+    }
+}
