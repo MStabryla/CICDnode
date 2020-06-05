@@ -31,8 +31,6 @@ jobs:
 workflows:
   build-test-and-deploy:
     jobs:
-      - build-and-test-client
-      - build-and-test-server
       - deploy:
           requires:
               - build-and-test-client
@@ -40,3 +38,6 @@ workflows:
           filters:
             only:
               - master
+      - build-and-test-client
+      - build-and-test-server
+      
