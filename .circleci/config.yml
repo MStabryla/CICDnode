@@ -29,11 +29,11 @@ jobs:
       - checkout
       - heroku/deploy-via-git
 workflows:
-  build-and-test:
+  build-test-and-deploy:
    jobs:
     - build-and-test-client
     - build-and-test-server
-    - deploy:
+    deploy:
       requires:
       - build-and-test-client
       - build-and-test-server
