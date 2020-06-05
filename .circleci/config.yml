@@ -7,7 +7,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-package
+      - node/install-packages
       - run: npm test
   build-and-test-server:
     executor: node/default
