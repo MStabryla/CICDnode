@@ -3,12 +3,13 @@ orbs:
   node: circleci/node@2.1.0
 jobs:
   build-and-test-client:
-    working_directory: ./client
     executor: node/default
     steps:
       - checkout
       - node/install-packages
-      - run: npm test
+      - run: 
+        command: npm test
+        working_directory: ./client
   build-and-test-server:
     executor: node/default
     steps:
