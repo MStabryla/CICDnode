@@ -34,9 +34,9 @@ workflows:
     - build-and-test-client
     - build-and-test-server
     - deploy:
-      requires:
+        requires:
         - build-and-test-client
         - build-and-test-server
-      filters:
-        only:
+        filters:
+          only:
           - master
