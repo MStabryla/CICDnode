@@ -2,13 +2,22 @@ version: 2.1
 orbs: 
   node: circleci/node@2.1.0
 jobs:
-  build-and-test:
+  build-and-test-client:
     executor: node/default
     steps:
       - checkout
+      - run: cd server
       - node/install-packages
       - run: npm test
+  build-and-test-server:
+    executor: node/default
+    steps:
+      - checkout
+      - run: cd client
+      - node/install-packages
+      - run: npm test node/install-packages
 workflows:
   build-and-test:
    jobs:
-    - build-and-test
+    - build-and-test-client
+    - build-and-test-server
