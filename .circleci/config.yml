@@ -16,9 +16,12 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - run: cd client
-      - node/install-packages
-      - run: npm test
+      - node/install-packages:
+          app-dir: ./server
+      - run: 
+          name: Testowanie
+          command: npm test
+          working_directory: ./server
 workflows:
   build-and-test:
    jobs:
