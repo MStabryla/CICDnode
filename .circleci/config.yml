@@ -8,8 +8,9 @@ jobs:
       - checkout
       - node/install-packages
       - run: 
-        command: npm test
-        working_directory: ./client
+          name: Testowanie
+          command: npm test
+          working_directory: ./client
   build-and-test-server:
     executor: node/default
     steps:
