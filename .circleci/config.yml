@@ -7,15 +7,15 @@ jobs:
     steps:
       - checkout
       - run: cd server
-      - node/install-packages
-      - run: npm test
+      - run: npm install /client/
+      - run: cd client; npm test
   build-and-test-server:
     executor: node/default
     steps:
       - checkout
       - run: cd client
       - node/install-packages
-      - run: npm test node/install-packages
+      - run: npm test
 workflows:
   build-and-test:
    jobs:
