@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: cd server
-      - run: npm install /client/
+      - run: npm install ./client
       - run: cd client; npm test
   build-and-test-server:
     executor: node/default
