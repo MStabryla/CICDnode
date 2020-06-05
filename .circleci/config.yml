@@ -30,10 +30,10 @@ jobs:
       - heroku/deploy-via-git
 workflows:
   build-test-and-deploy:
-   jobs:
-    - build-and-test-client
-    - build-and-test-server
-    - deploy:
+    jobs:
+      - build-and-test-client
+      - build-and-test-server
+      - deploy:
           requires:
               - build-and-test-client
               - build-and-test-server
