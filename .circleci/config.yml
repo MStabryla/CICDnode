@@ -1,6 +1,7 @@
 version: 2.1
 orbs: 
   node: circleci/node@2.1.0
+  heroku: circleci/heroku@1.0.1
 jobs:
   build-and-test-client:
     executor: node/default
@@ -22,8 +23,20 @@ jobs:
           name: Testowanie
           command: npm test
           working_directory: ./server
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/deploy-via-git
 workflows:
   build-and-test:
    jobs:
     - build-and-test-client
     - build-and-test-server
+    - deploy:
+      requires:
+      - build-and-test-client
+      - build-and-test-server
+      filters:
+        only:
+        - master
