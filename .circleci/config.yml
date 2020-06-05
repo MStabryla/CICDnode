@@ -28,16 +28,17 @@ jobs:
     steps:
       - checkout
       - heroku/deploy-via-git
+
 workflows:
-  build-test-and-deploy:
-    jobs:
-      - deploy:
-          requires:
+    build-test-and-deploy:
+        jobs:
+        - build-and-test-client
+        - build-and-test-server
+        - deploy:
+              requires:
               - build-and-test-client
               - build-and-test-server
-          filters:
-            only:
-              - master
-      - build-and-test-client
-      - build-and-test-server
-      
+              filters:
+                  branches:
+                    only: 
+                    - master
